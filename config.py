@@ -47,6 +47,6 @@ DEFAULT_ADMIN_PASSWORD = "admin123"       # Hashed before storage
 # ──────────────────────────────────────────────
 CURRENCY_SYMBOL = "Rs."
 APP_TITLE = "ATM Simulation System"
-WINDOW_WIDTH = 950
-WINDOW_HEIGHT = 760
+WINDOW_WIDTH = 900
+WINDOW_HEIGHT = 660
 MINI_STATEMENT_LIMIT = 10    # Number of recent transactions to show
