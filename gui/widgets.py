@@ -157,7 +157,7 @@ class ATMKeypad(tk.Frame):
         # Enter button (spans full width)
         btn_enter = ATMButton(
             self, text="ENTER", variant="primary",
-            width=20, height=2,
+            height=2,
             font=Fonts.BUTTON,
             command=self._enter_pressed,
         )
