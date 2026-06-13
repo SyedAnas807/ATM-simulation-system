@@ -42,7 +42,7 @@ class PinScreen(tk.Frame):
             font=Fonts.TITLE_LG,
             bg=Colors.BG_DARK, fg=Colors.ACCENT,
         )
-        header.pack(pady=(15, 5))
+        header.pack(pady=(8, 2))
 
         # ── Masked Card Display ──────────────
         self.card_label = tk.Label(
@@ -50,11 +50,11 @@ class PinScreen(tk.Frame):
             font=Fonts.BODY_LG,
             bg=Colors.BG_DARK, fg=Colors.TEXT_SECONDARY,
         )
-        self.card_label.pack(pady=(0, 10))
+        self.card_label.pack(pady=(0, 4))
 
         # ── PIN Display Card ─────────────────
         pin_card = CardFrame(self)
-        pin_card.pack(pady=(0, 10), padx=200)
+        pin_card.pack(pady=(0, 4), padx=200)
         inner = pin_card.get_inner()
 
         self.pin_display = tk.Label(
@@ -64,7 +64,7 @@ class PinScreen(tk.Frame):
             width=12,
             anchor="center",
         )
-        self.pin_display.pack(pady=Sizing.PAD_LG, padx=Sizing.PAD_XL)
+        self.pin_display.pack(pady=Sizing.PAD_SM, padx=Sizing.PAD_XL)
 
         # PIN format hint
         self.hint_label = tk.Label(
@@ -72,7 +72,7 @@ class PinScreen(tk.Frame):
             font=Fonts.BODY_SM,
             bg=Colors.BG_CARD, fg=Colors.TEXT_SECONDARY,
         )
-        self.hint_label.pack(pady=(0, Sizing.PAD_MD))
+        self.hint_label.pack(pady=(0, Sizing.PAD_SM))
 
         # ── Keypad ───────────────────────────
         self.keypad = ATMKeypad(
@@ -82,11 +82,11 @@ class PinScreen(tk.Frame):
             on_backspace=self._on_backspace,
             on_enter=self._on_enter,
         )
-        self.keypad.pack(pady=5)
+        self.keypad.pack(pady=2)
 
         # ── Status Message ───────────────────
         self.status = StatusLabel(self)
-        self.status.pack(pady=Sizing.PAD_SM)
+        self.status.pack(pady=2)
 
         # ── Cancel Button ────────────────────
         cancel_btn = ATMButton(
@@ -94,7 +94,7 @@ class PinScreen(tk.Frame):
             variant="secondary", width=14,
             command=self._on_cancel,
         )
-        cancel_btn.pack(pady=(5, 15))
+        cancel_btn.pack(pady=(2, 8))
 
     def on_show(self, card_number: str = "", **kwargs):
         """Called when screen becomes visible. Resets PIN state."""
