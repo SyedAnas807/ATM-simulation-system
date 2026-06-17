@@ -32,11 +32,11 @@ class ChangePinScreen(tk.Frame):
     def _build_ui(self):
         # Timer
         self.timer = TimerBar(self)
-        self.timer.pack(anchor="ne", padx=Sizing.PAD_LG, pady=(Sizing.PAD_SM, 0))
+        self.timer.pack(anchor="ne", padx=Sizing.PAD_LG, pady=(Sizing.PAD_XS, 0))
 
         # Header
         header = HeaderBar(self, title="Change PIN", subtitle="")
-        header.pack(fill="x", pady=(10, 10))
+        header.pack(fill="x", pady=(4, 4))
 
         # Step indicator
         self.step_label = tk.Label(
@@ -44,11 +44,11 @@ class ChangePinScreen(tk.Frame):
             font=Fonts.TITLE_SM,
             bg=Colors.BG_DARK, fg=Colors.TEXT_PRIMARY,
         )
-        self.step_label.pack(pady=(5, 10))
+        self.step_label.pack(pady=(2, 4))
 
         # PIN display
         pin_card = CardFrame(self)
-        pin_card.pack(pady=5, padx=220)
+        pin_card.pack(pady=2, padx=220)
         inner = pin_card.get_inner()
 
         self.pin_display = tk.Label(
@@ -57,7 +57,7 @@ class ChangePinScreen(tk.Frame):
             bg=Colors.BG_CARD, fg=Colors.ACCENT,
             width=12, anchor="center",
         )
-        self.pin_display.pack(pady=Sizing.PAD_LG, padx=Sizing.PAD_XL)
+        self.pin_display.pack(pady=Sizing.PAD_SM, padx=Sizing.PAD_XL)
 
         # Keypad
         self.keypad = ATMKeypad(
@@ -67,18 +67,18 @@ class ChangePinScreen(tk.Frame):
             on_backspace=self._on_backspace,
             on_enter=self._on_enter,
         )
-        self.keypad.pack(pady=5)
+        self.keypad.pack(pady=2)
 
         # Status
         self.status = StatusLabel(self)
-        self.status.pack(pady=Sizing.PAD_SM)
+        self.status.pack(pady=2)
 
         # Cancel
         ATMButton(
             self, text="CANCEL",
             variant="secondary", width=14,
             command=lambda: self.app.show_screen("main_menu"),
-        ).pack(pady=(5, 10))
+        ).pack(pady=(2, 6))
 
     def on_show(self, **kwargs):
         self.step = 1
