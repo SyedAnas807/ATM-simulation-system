@@ -113,7 +113,8 @@ class ATMKeypad(tk.Frame):
     def _build_keypad(self):
         """Construct the keypad grid."""
         pad = Sizing.PAD_XS
-        
+        btn_h = 1  # Compact button height
+      
         # Digit buttons (1-9)
         digits = [
             ["1", "2", "3"],
@@ -125,6 +126,7 @@ class ATMKeypad(tk.Frame):
             for col_idx, digit in enumerate(row):
                 btn = ATMButton(
                     self, text=digit, variant="keypad",
+                    height=btn_h,
                     command=lambda d=digit: self._digit_pressed(d),
                 )
                 btn.grid(row=row_idx, column=col_idx, padx=pad, pady=pad)
@@ -133,7 +135,7 @@ class ATMKeypad(tk.Frame):
         btn_clear = ATMButton(
             self, text="C", variant="danger",
             width=Sizing.KEYPAD_BTN_WIDTH,
-            height=Sizing.KEYPAD_BTN_HEIGHT,
+            height=btn_h,
             font=Fonts.KEYPAD,
             command=self._clear_pressed,
         )
@@ -141,6 +143,7 @@ class ATMKeypad(tk.Frame):
         
         btn_zero = ATMButton(
             self, text="0", variant="keypad",
+            height=btn_h,
             command=lambda: self._digit_pressed("0"),
         )
         btn_zero.grid(row=3, column=1, padx=pad, pady=pad)
@@ -148,7 +151,7 @@ class ATMKeypad(tk.Frame):
         btn_back = ATMButton(
             self, text="<<", variant="secondary",
             width=Sizing.KEYPAD_BTN_WIDTH,
-            height=Sizing.KEYPAD_BTN_HEIGHT,
+            height=btn_h,
             font=Fonts.KEYPAD,
             command=self._backspace_pressed,
         )
@@ -157,12 +160,12 @@ class ATMKeypad(tk.Frame):
         # Enter button (spans full width)
         btn_enter = ATMButton(
             self, text="ENTER", variant="primary",
-            height=2,
+            height=1,
             font=Fonts.BUTTON,
             command=self._enter_pressed,
         )
         btn_enter.grid(row=4, column=0, columnspan=3,
-                       padx=pad, pady=(pad + 4, pad), sticky="ew")
+                       padx=pad, pady=(pad + 2, pad), sticky="ew")
 
     def _digit_pressed(self, digit: str):
         if self.on_key:
